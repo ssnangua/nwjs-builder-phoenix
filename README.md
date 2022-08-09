@@ -1,6 +1,6 @@
 - Fixed: multiple `languages`
 
-<img src="screenshots/multiple-languages.jpg" width="50%">
+<img src="https://raw.githubusercontent.com/ssnangua/nwjs-builder-phoenix/HEAD/screenshots/multiple-languages.jpg" width="50%">
 
 ```json
 {
@@ -18,7 +18,7 @@
 
 - Features: `win.displayedName`, `nsis.installerIcon`, `nsis.welcomeBmp`
 
-<img src="screenshots/features.jpg">
+<img src="https://raw.githubusercontent.com/ssnangua/nwjs-builder-phoenix/HEAD/screenshots/features.jpg">
 
 ```json
 {
