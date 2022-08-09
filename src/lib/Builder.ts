@@ -586,6 +586,7 @@ export class Builder {
 
             // Basic.
             appName: config.win.productName,
+            displayedName: config.win.displayedName || config.win.productName,
             companyName: config.win.companyName,
             description: config.win.fileDescription,
             version: fixWindowsVersion(config.win.productVersion),
@@ -593,6 +594,8 @@ export class Builder {
 
             icon: config.nsis.icon ? resolve(this.dir, config.nsis.icon) : undefined,
             unIcon: config.nsis.unIcon ? resolve(this.dir, config.nsis.unIcon) : undefined,
+            installerIcon: config.nsis.installerIcon ? resolve(this.dir, config.nsis.installerIcon) : undefined,
+            welcomeBmp: config.nsis.welcomeBmp ? resolve(this.dir, config.nsis.welcomeBmp) : undefined,
 
             // Compression.
             compression: 'lzma',
@@ -718,6 +721,7 @@ export class Builder {
 
             // Basic.
             appName: config.win.productName,
+            displayedName: config.win.displayedName || config.win.productName,
             companyName: config.win.companyName,
             description: config.win.fileDescription,
             version: fixWindowsVersion(config.win.productVersion),
@@ -725,6 +729,8 @@ export class Builder {
 
             icon: config.nsis.icon ? resolve(this.dir, config.nsis.icon) : undefined,
             unIcon: config.nsis.unIcon ? resolve(this.dir, config.nsis.unIcon) : undefined,
+            installerIcon: config.nsis.installerIcon ? resolve(this.dir, config.nsis.installerIcon) : undefined,
+            welcomeBmp: config.nsis.welcomeBmp ? resolve(this.dir, config.nsis.welcomeBmp) : undefined,
 
             // Compression.
             compression: 'lzma',
@@ -783,6 +789,7 @@ export class Builder {
 
             // Basic.
             appName: config.win.productName,
+            displayedName: config.win.displayedName || config.win.productName,
             companyName: config.win.companyName,
             description: config.win.fileDescription,
             version: fixWindowsVersion(config.win.productVersion),
@@ -790,6 +797,8 @@ export class Builder {
 
             icon: config.nsis.icon ? resolve(this.dir, config.nsis.icon) : undefined,
             unIcon: config.nsis.unIcon ? resolve(this.dir, config.nsis.unIcon) : undefined,
+            installerIcon: config.nsis.installerIcon ? resolve(this.dir, config.nsis.installerIcon) : undefined,
+            welcomeBmp: config.nsis.welcomeBmp ? resolve(this.dir, config.nsis.welcomeBmp) : undefined,
 
             // Compression.
             compression: 'lzma',

@@ -1,5 +1,5 @@
 {
-  "name": "nwjs-builder-phoenix",
+  "name": "@ssnangua/nwjs-builder-phoenix",
   "version": "1.15.0",
   "description": "",
   "main": "./dist/lib/index.js",
@@ -13,7 +13,8 @@
     "test": "npm run build && ava",
     "coverage": "nyc ava",
     "build": "tsc --declaration",
-    "release": "npm test && standard-version"
+    "release": "npm test && standard-version",
+    "publish": "npm publish --access public"
   },
   "repository": {
     "type": "git",

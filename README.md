@@ -1,3 +1,40 @@
+- Fixed: multiple `languages`
+
+<img src="screenshots/multiple-languages.jpg" width="50%">
+
+```json
+{
+  "build": {
+    "nsis": {
+      "languages": [
+        "English",
+        "SimpChinese",
+        "TradChinese"
+      ]
+    }
+  }
+}
+```
+
+- Features: `win.displayedName`, `nsis.installerIcon`, `nsis.welcomeBmp`
+
+<img src="screenshots/features.jpg">
+
+```json
+{
+  "build": {
+    "win": {
+      "displayedName": "Displayed Name",
+    },
+    "nsis": {
+      "installerIcon": "installer.ico",
+      "welcomeBmp": "welcome-164x314.bmp",
+    }
+  }
+}
+```
+
+---
 
 # nwjs-builder-phoenix [![npm version](https://img.shields.io/npm/v/nwjs-builder-phoenix.svg)](https://npmjs.org/package/nwjs-builder-phoenix) [![Standard Version](https://img.shields.io/badge/release-standard%20version-brightgreen.svg)](https://github.com/conventional-changelog/standard-version)
 

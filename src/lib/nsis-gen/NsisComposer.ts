@@ -9,6 +9,7 @@ export interface INsisComposerOptions {
 
     // Basic.
     appName: string;
+    displayedName: string;
     companyName: string;
     description: string;
     version: string;
@@ -16,6 +17,8 @@ export interface INsisComposerOptions {
 
     icon: string;
     unIcon: string;
+    installerIcon: string;
+    welcomeBmp: string;
 
     // Compression.
     compression: 'zlib' | 'bzip2' | 'lzma';
@@ -63,6 +66,10 @@ LangString INSTALLING 1031 "Installiere"
 
         if(!this.options.appName) {
             this.options.appName = 'NO_APPNAME';
+        }
+
+        if(!this.options.displayedName) {
+            this.options.displayedName = 'NO_DISPLAYEDNAME';
         }
 
         if(!this.options.companyName) {
@@ -121,6 +128,7 @@ ${ await this.makeUninstallSection() }`;
 ${ NsisComposer.DIVIDER }
 
 !define _APPNAME "${ this.options.appName }"
+!define _DISPLAYEDNAME "${ this.options.displayedName }"
 !define _COMPANYNAME "${ this.options.companyName }"
 !define _DESCRIPTION "${ this.options.description }"
 !define _VERSION "${ this.fixedVersion }"
@@ -129,7 +137,7 @@ ${ NsisComposer.DIVIDER }
 
 ${ this.options.languages.map((language) => {
     return NsisComposer.STRINGS[language] ? NsisComposer.STRINGS[language] : '';
-}) }`;
+}).join("\n\n") }`;
     }
 
     protected async makeGeneral(): Promise<string> {
@@ -141,9 +149,9 @@ ${ NsisComposer.DIVIDER }
 
 Unicode true
 
-Name "\${_APPNAME}"
-Caption "\${_APPNAME}"
-BrandingText "\${_APPNAME} \${_VERSION}"
+Name "\${_DISPLAYEDNAME}"
+Caption "\${_DISPLAYEDNAME}"
+BrandingText "\${_DISPLAYEDNAME} \${_VERSION}"
 ${
     this.options.icon
     ? `Icon "${ win32.normalize(resolve(this.options.icon)) }"`
@@ -175,8 +183,20 @@ ${ NsisComposer.DIVIDER }
 !include "MUI2.nsh"
 
 Function CreateDesktopShortcut
-    CreateShortcut "$DESKTOP\\\${_APPNAME}.lnk" "$INSTDIR\\\${_APPNAME}.exe"
+    CreateShortcut "$DESKTOP\\\${_DISPLAYEDNAME}.lnk" "$INSTDIR\\\${_APPNAME}.exe"
 FunctionEnd
+
+${
+    this.options.installerIcon
+    ? `!define MUI_ICON "${ win32.normalize(resolve(this.options.installerIcon)) }"`
+    : ''
+}
+
+${
+    this.options.welcomeBmp
+    ? `!define MUI_WELCOMEFINISHPAGE_BITMAP "${ win32.normalize(resolve(this.options.welcomeBmp)) }"`
+    : ''
+}
 
 !define MUI_STARTMENUPAGE_REGISTRY_ROOT "HKCU"
 !define MUI_STARTMENUPAGE_REGISTRY_KEY "Software\\\${_APPNAME}"
@@ -266,7 +286,7 @@ ${ await this.makeInstallerFiles() }
 !insertmacro MUI_STARTMENU_WRITE_BEGIN "Application"
 
     CreateDirectory "$SMPROGRAMS\\$StartMenuFolder"
-    CreateShortcut "$SMPROGRAMS\\$StartMenuFolder\\\${_APPNAME}.lnk" "$INSTDIR\\\${_APPNAME}.exe"
+    CreateShortcut "$SMPROGRAMS\\$StartMenuFolder\\\${_DISPLAYEDNAME}.lnk" "$INSTDIR\\\${_APPNAME}.exe"
     CreateShortcut "$SMPROGRAMS\\$StartMenuFolder\\Uninstall.lnk" "$INSTDIR\\Uninstall.exe"
 
 !insertmacro MUI_STARTMENU_WRITE_END
@@ -290,11 +310,11 @@ RMDir /r "$INSTDIR"
 
 !insertmacro MUI_STARTMENU_GETFOLDER "Application" $StartMenuFolder
 
-Delete "$SMPROGRAMS\\$StartMenuFolder\\\${_APPNAME}.lnk"
+Delete "$SMPROGRAMS\\$StartMenuFolder\\\${_DISPLAYEDNAME}.lnk"
 Delete "$SMPROGRAMS\\$StartMenuFolder\\Uninstall.lnk"
 RMDir "$SMPROGRAMS\\$StartMenuFolder"
 
-Delete "$DESKTOP\\\${_APPNAME}.lnk"
+Delete "$DESKTOP\\\${_DISPLAYEDNAME}.lnk"
 
 DeleteRegKey HKCU "Software\\\${_APPNAME}"
 
