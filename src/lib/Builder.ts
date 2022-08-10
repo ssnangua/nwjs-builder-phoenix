@@ -591,10 +591,12 @@ export class Builder {
             description: config.win.fileDescription,
             version: fixWindowsVersion(config.win.productVersion),
             copyright: config.win.copyright,
+            runAsAdmin: config.win.runAsAdmin,
 
             icon: config.nsis.icon ? resolve(this.dir, config.nsis.icon) : undefined,
             unIcon: config.nsis.unIcon ? resolve(this.dir, config.nsis.unIcon) : undefined,
             installerIcon: config.nsis.installerIcon ? resolve(this.dir, config.nsis.installerIcon) : undefined,
+            uninstallerIcon: config.nsis.uninstallerIcon ? resolve(this.dir, config.nsis.uninstallerIcon) : undefined,
             welcomeBmp: config.nsis.welcomeBmp ? resolve(this.dir, config.nsis.welcomeBmp) : undefined,
 
             // Compression.
@@ -726,10 +728,12 @@ export class Builder {
             description: config.win.fileDescription,
             version: fixWindowsVersion(config.win.productVersion),
             copyright: config.win.copyright,
+            runAsAdmin: config.win.runAsAdmin,
 
             icon: config.nsis.icon ? resolve(this.dir, config.nsis.icon) : undefined,
             unIcon: config.nsis.unIcon ? resolve(this.dir, config.nsis.unIcon) : undefined,
             installerIcon: config.nsis.installerIcon ? resolve(this.dir, config.nsis.installerIcon) : undefined,
+            uninstallerIcon: config.nsis.uninstallerIcon ? resolve(this.dir, config.nsis.uninstallerIcon) : undefined,
             welcomeBmp: config.nsis.welcomeBmp ? resolve(this.dir, config.nsis.welcomeBmp) : undefined,
 
             // Compression.
@@ -794,10 +798,12 @@ export class Builder {
             description: config.win.fileDescription,
             version: fixWindowsVersion(config.win.productVersion),
             copyright: config.win.copyright,
+            runAsAdmin: config.win.runAsAdmin,
 
             icon: config.nsis.icon ? resolve(this.dir, config.nsis.icon) : undefined,
             unIcon: config.nsis.unIcon ? resolve(this.dir, config.nsis.unIcon) : undefined,
             installerIcon: config.nsis.installerIcon ? resolve(this.dir, config.nsis.installerIcon) : undefined,
+            uninstallerIcon: config.nsis.uninstallerIcon ? resolve(this.dir, config.nsis.uninstallerIcon) : undefined,
             welcomeBmp: config.nsis.welcomeBmp ? resolve(this.dir, config.nsis.welcomeBmp) : undefined,
 
             // Compression.

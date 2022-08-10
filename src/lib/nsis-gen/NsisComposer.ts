@@ -14,10 +14,12 @@ export interface INsisComposerOptions {
     description: string;
     version: string;
     copyright: string;
+    runAsAdmin: boolean;
 
     icon: string;
     unIcon: string;
     installerIcon: string;
+    uninstallerIcon: string;
     welcomeBmp: string;
 
     // Compression.
@@ -91,6 +93,7 @@ LangString INSTALLING 1031 "Installiere"
         this.options.compression = this.options.compression || 'lzma';
         this.options.solid = this.options.solid ? true : false;
         this.options.languages = this.options.languages && this.options.languages.length > 0 ? this.options.languages : [ 'English' ];
+        this.options.runAsAdmin = this.options.runAsAdmin ? true : false;
 
         this.fixedVersion = fixWindowsVersion(this.options.version);
 
@@ -193,6 +196,12 @@ ${
 }
 
 ${
+    this.options.uninstallerIcon
+    ? `!define MUI_UNICON "${ win32.normalize(resolve(this.options.uninstallerIcon)) }"`
+    : ''
+}
+
+${
     this.options.welcomeBmp
     ? `!define MUI_WELCOMEFINISHPAGE_BITMAP "${ win32.normalize(resolve(this.options.welcomeBmp)) }"`
     : ''
@@ -281,6 +290,12 @@ SetOverwrite ifnewer
 
 WriteRegStr HKCU "Software\\\${_APPNAME}" "InstallDir" "$INSTDIR"
 
+${
+    this.options.runAsAdmin
+    ? `WriteRegStr HKCU "Software\\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\\Layers" "$INSTDIR\\\${_APPNAME}.exe" "RUNASADMIN"`
+    : ''
+}
+
 ${ await this.makeInstallerFiles() }
 
 !insertmacro MUI_STARTMENU_WRITE_BEGIN "Application"
@@ -317,6 +332,12 @@ RMDir "$SMPROGRAMS\\$StartMenuFolder"
 Delete "$DESKTOP\\\${_DISPLAYNAME}.lnk"
 
 DeleteRegKey HKCU "Software\\\${_APPNAME}"
+
+${
+    this.options.runAsAdmin
+    ? `DeleteRegValue HKCU "Software\\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\\Layers" "$INSTDIR\\\${_APPNAME}.exe"`
+    : ''
+}
 
 SectionEnd`;
     }

@@ -1,5 +1,10 @@
-- Fixed: multiple `languages`
+## Fixed
 
+Name | Type | Description
+--- | --- | ---
+languages | string[] | Languages for NSIS installers. *Multiple languages* (**fixed**) will result in a language selection dialog on startup. See /assets/nsis/Contrib/Language files/ for available values. Defaults to [ 'English' ].
+
+<br/>
 <img src="https://raw.githubusercontent.com/ssnangua/nwjs-builder-phoenix/HEAD/screenshots/multiple-languages.jpg" width="50%">
 
 ```json
@@ -16,8 +21,24 @@
 }
 ```
 
-- Features: `win.displayName`, `nsis.installerIcon`, `nsis.welcomeBmp`
+## New features
 
+### build.win <- [WinConfig](../src/lib/config/WinConfig.ts)
+
+Name | Type | Description
+--- | --- | ---
+displayName | string | The name use for display (install GUI, shortcut name, start menu folder), independent of the appName (`name` of `package.json`) and `win.productName`. Defaults to `${ productName \|\| appName }`.
+runAsAdmin | boolean | Run as administrator. Defaults to `false`.
+
+### build.nsis <- [NsisConfig](../src/lib/config/NsisConfig.ts)
+
+Name | Type | Description
+--- | --- | ---
+installerIcon | string | .ico icon file for NSIS installers relative to the project root. Defaults to `undefined`.
+uninstallerIcon | string | .ico icon file for NSIS uninstallers relative to the project root. Defaults to `undefined`.
+welcomeBmp | string | Bitmap for the Welcome page and the Finish page (recommended size: 164x314 pixels). Defaults to `undefined`.
+
+<br/>
 <img src="https://raw.githubusercontent.com/ssnangua/nwjs-builder-phoenix/HEAD/screenshots/features.jpg">
 
 ```json
@@ -25,10 +46,29 @@
   "build": {
     "win": {
       "displayName": "Displayed Name",
+      "runAsAdmin": false
     },
     "nsis": {
       "installerIcon": "installer.ico",
-      "welcomeBmp": "welcome-164x314.bmp",
+      "uninstallerIcon": "uninstaller.ico",
+      "welcomeBmp": "welcome-164x314.bmp"
+    }
+  }
+}
+```
+
+**Note:**
+
+In my project, `icon` and `unIcon` didn't work, so you may need to set both `icon` and `installerIcon`, `unIcon` and `uninstallerIcon`:
+
+```json
+{
+  "build": {
+    "nsis": {
+      "icon": "installer.ico",
+      "installerIcon": "installer.ico",
+      "unIcon": "uninstaller.ico",
+      "uninstallerIcon": "uninstaller.ico"
     }
   }
 }

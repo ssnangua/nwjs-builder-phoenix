@@ -8,6 +8,7 @@ export class WinConfig {
     public productVersion: string = '';
     public fileVersion: string = '';
     public copyright: string = '';
+    public runAsAdmin: boolean = false;
     public versionStrings: {
         ProductName?: undefined,
         CompanyName?: undefined,

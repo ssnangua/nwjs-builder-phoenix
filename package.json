@@ -1,7 +1,7 @@
 {
   "name": "@ssnangua/nwjs-builder-phoenix",
-  "version": "1.15.2",
-  "description": "Fixed multiple `languages`, support `installerIcon`, `welcomeBmp` and `displayName`",
+  "version": "1.15.4",
+  "description": "Fixed bugs and added some new features (`runAsAdmin`, `welcomeBmp`, etc.)",
   "main": "./dist/lib/index.js",
   "types": "./dist/lib/index.d.ts",
   "bin": {
@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/evshiron/nwjs-builder-phoenix.git"
+    "url": "git+https://github.com/ssnangua/nwjs-builder-phoenix.git"
   },
   "author": "evshiron",
   "license": "MIT",

@@ -4,6 +4,7 @@ export class NsisConfig {
     public icon: string = undefined;
     public unIcon: string = undefined;
     public installerIcon: string = undefined;
+    public uninstallerIcon: string = undefined;
     public welcomeBmp: string = undefined;
 
     public languages: string[] = [ 'English' ];
