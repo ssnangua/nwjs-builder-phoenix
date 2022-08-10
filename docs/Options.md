@@ -33,6 +33,13 @@ fileVersion | string | File version. Defaults to `${ productVersion }`
 versionStrings | { [key: string]: string } | `rcedit` version strings. Defaults to `{}`.
 icon | string | .ico icon file relative to the project root. Defaults to `undefined`.
 
+### Added
+
+Name | Type | Description
+--- | --- | ---
+displayName | string | The name use for display (install GUI, shortcut name, start menu folder), independent of the appName (`name` of `package.json`) and `win.productName`. Defaults to `${ productName \|\| appName }`.
+runAsAdmin | boolean | Run as administrator. Defaults to `false`.
+
 ## build.mac <- [MacConfig](../src/lib/config/MacConfig.ts)
 
 Name | Type | Description
@@ -60,3 +67,11 @@ languages | string[] | Languages for NSIS installers. Multiple languages will re
 installDirectory | string | Default installation directory. Allow using NSIS variables. See [/src/lib/nsis-gen/NsisComposer.ts](../src/lib/nsis-gen/NsisComposer.ts) for a list of self-defined constants. Defaults to `$LOCALAPPDATA\\${_APPNAME}`.
 diffUpdaters | boolean | Whether to build diff updaters. Defaults to `false`.
 hashCalculation | boolean | Whether to calculate hashes for installers and updaters. Defaults to `true`.
+
+### Added
+
+Name | Type | Description
+--- | --- | ---
+installerIcon | string | .ico icon file for NSIS installers relative to the project root. Defaults to `undefined`.
+uninstallerIcon | string | .ico icon file for NSIS uninstallers relative to the project root. Defaults to `undefined`.
+welcomeBmp | string | Bitmap for the Welcome page and the Finish page (recommended size: 164x314 pixels). Defaults to `undefined`.
