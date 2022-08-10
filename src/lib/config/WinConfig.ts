@@ -2,7 +2,7 @@
 export class WinConfig {
 
     public productName: string = '';
-    public displayedName: string = '';
+    public displayName: string = '';
     public companyName: string = '';
     public fileDescription: string = '';
     public productVersion: string = '';

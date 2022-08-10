@@ -1,7 +1,7 @@
 {
   "name": "@ssnangua/nwjs-builder-phoenix",
-  "version": "1.15.1",
-  "description": "",
+  "version": "1.15.2",
+  "description": "Fixed multiple `languages`, support `installerIcon`, `welcomeBmp` and `displayName`",
   "main": "./dist/lib/index.js",
   "types": "./dist/lib/index.d.ts",
   "bin": {

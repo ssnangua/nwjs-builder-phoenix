@@ -16,7 +16,7 @@
 }
 ```
 
-- Features: `win.displayedName`, `nsis.installerIcon`, `nsis.welcomeBmp`
+- Features: `win.displayName`, `nsis.installerIcon`, `nsis.welcomeBmp`
 
 <img src="https://raw.githubusercontent.com/ssnangua/nwjs-builder-phoenix/HEAD/screenshots/features.jpg">
 
@@ -24,7 +24,7 @@
 {
   "build": {
     "win": {
-      "displayedName": "Displayed Name",
+      "displayName": "Displayed Name",
     },
     "nsis": {
       "installerIcon": "installer.ico",
