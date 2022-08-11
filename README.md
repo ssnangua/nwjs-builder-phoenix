@@ -1,4 +1,8 @@
+[See all available options here](./docs/Options.md).
+
 ## Fixed
+
+### build.nsis <- [NsisConfig](./src/lib/config/NsisConfig.ts)
 
 Name | Type | Description
 --- | --- | ---
@@ -23,20 +27,21 @@ languages | string[] | Languages for NSIS installers. *Multiple languages* (**fi
 
 ## New features
 
-### build.win <- [WinConfig](../src/lib/config/WinConfig.ts)
+### build.win <- [WinConfig](./src/lib/config/WinConfig.ts)
 
 Name | Type | Description
 --- | --- | ---
 displayName | string | The name use for display (install GUI, shortcut name, start menu folder), independent of the appName (`name` of `package.json`) and `win.productName`. Defaults to `${ productName \|\| appName }`.
 runAsAdmin | boolean | Run as administrator. Defaults to `false`.
 
-### build.nsis <- [NsisConfig](../src/lib/config/NsisConfig.ts)
+### build.nsis <- [NsisConfig](./src/lib/config/NsisConfig.ts)
 
 Name | Type | Description
 --- | --- | ---
 installerIcon | string | .ico icon file for NSIS installers relative to the project root. Defaults to `undefined`.
 uninstallerIcon | string | .ico icon file for NSIS uninstallers relative to the project root. Defaults to `undefined`.
 welcomeBmp | string | Bitmap for the Welcome page and the Finish page (recommended size: 164x314 pixels). Defaults to `undefined`.
+licenses | string[] | License text/RTF files in multiple languages matching `nsis.languages` for NSIS installers relative to the project root. Defaults to `undefined`.
 
 <br/>
 <img src="https://raw.githubusercontent.com/ssnangua/nwjs-builder-phoenix/HEAD/screenshots/features.jpg">
@@ -57,7 +62,7 @@ welcomeBmp | string | Bitmap for the Welcome page and the Finish page (recommend
 }
 ```
 
-**Note:**
+#### icons
 
 In my project, `icon` and `unIcon` didn't work, so you may need to set both `icon` and `installerIcon`, `unIcon` and `uninstallerIcon`:
 
@@ -69,6 +74,33 @@ In my project, `icon` and `unIcon` didn't work, so you may need to set both `ico
       "installerIcon": "installer.ico",
       "unIcon": "uninstaller.ico",
       "uninstallerIcon": "uninstaller.ico"
+    }
+  }
+}
+```
+
+#### `nsis.licenses`
+
+**Note** that the order of the license files needs to match `nsis.languages`.
+
+**Note** the encoding of the text/RTF files, see https://en.wikipedia.org/wiki/Rich_Text_Format#Character_encoding.
+
+For example, `SimpChinese` uses `GBK`-encoded license file, and `TradChinese` uses `Big5`-encoded license file.
+
+```json
+{
+  "build": {
+    "nsis": {
+      "languages": [
+        "English",
+        "SimpChinese",
+        "TradChinese"
+      ],
+      "licenses": [
+        "License-English.txt",
+        "License-SimpChinese.rtf",
+        "License-TradChinese.rtf"
+      ],
     }
   }
 }

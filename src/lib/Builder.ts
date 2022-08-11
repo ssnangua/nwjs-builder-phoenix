@@ -604,6 +604,12 @@ export class Builder {
             solid: true,
 
             languages: config.nsis.languages,
+            licenses: config.nsis.licenses && config.nsis.licenses.length > 0
+                ? config.nsis.licenses.map(lic => resolve(this.dir, lic))
+                : undefined,
+            unLicenses: config.nsis.unLicenses && config.nsis.unLicenses.length > 0
+                ? config.nsis.unLicenses.map(lic => resolve(this.dir, lic))
+                : undefined,
             installDirectory: config.nsis.installDirectory,
 
             // Output.
@@ -741,6 +747,12 @@ export class Builder {
             solid: true,
 
             languages: config.nsis.languages,
+            licenses: config.nsis.licenses && config.nsis.licenses.length > 0
+                ? config.nsis.licenses.map(lic => resolve(this.dir, lic))
+                : undefined,
+            unLicenses: config.nsis.unLicenses && config.nsis.unLicenses.length > 0
+                ? config.nsis.unLicenses.map(lic => resolve(this.dir, lic))
+                : undefined,
             installDirectory: config.nsis.installDirectory,
 
             // Output.
@@ -811,6 +823,12 @@ export class Builder {
             solid: true,
 
             languages: config.nsis.languages,
+            licenses: config.nsis.licenses && config.nsis.licenses.length > 0
+                ? config.nsis.licenses.map((lic) => resolve(this.dir, lic))
+                : undefined,
+            unLicenses: config.nsis.unLicenses && config.nsis.unLicenses.length > 0
+                ? config.nsis.unLicenses.map((lic) => resolve(this.dir, lic))
+                : undefined,
             installDirectory: config.nsis.installDirectory,
 
             // Output.

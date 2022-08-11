@@ -75,3 +75,4 @@ Name | Type | Description
 installerIcon | string | .ico icon file for NSIS installers relative to the project root. Defaults to `undefined`.
 uninstallerIcon | string | .ico icon file for NSIS uninstallers relative to the project root. Defaults to `undefined`.
 welcomeBmp | string | Bitmap for the Welcome page and the Finish page (recommended size: 164x314 pixels). Defaults to `undefined`.
+licenses | string[] | License text/RTF files in multiple languages matching `nsis.languages` for NSIS installers relative to the project root. Defaults to `undefined`.

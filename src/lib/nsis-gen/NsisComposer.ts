@@ -27,6 +27,8 @@ export interface INsisComposerOptions {
     solid: boolean;
 
     languages: string[];
+    licenses: string[];
+    unLicenses: string[];
 
     installDirectory: string;
 
@@ -220,6 +222,11 @@ Var StartMenuFolder
 !define MUI_FINISHPAGE_RUN "$INSTDIR\\\${_APPNAME}.exe"
 
 !insertmacro MUI_PAGE_WELCOME
+${
+    this.options.licenses
+    ? `!insertmacro MUI_PAGE_LICENSE $(pagelicense)`
+    : ''
+}
 !insertmacro MUI_PAGE_DIRECTORY
 !insertmacro MUI_PAGE_STARTMENU "Application" $StartMenuFolder
 !insertmacro MUI_PAGE_INSTFILES
@@ -227,12 +234,24 @@ Var StartMenuFolder
 
 !insertmacro MUI_UNPAGE_WELCOME
 !insertmacro MUI_UNPAGE_CONFIRM
+${
+    this.options.unLicenses
+    ? `!insertmacro MUI_UNPAGE_LICENSE $(unpagelicense)`
+    : ''
+}
 !insertmacro MUI_UNPAGE_INSTFILES
 !insertmacro MUI_UNPAGE_FINISH
 
 ${
-    this.options.languages.map((language) => {
-        return `!insertmacro MUI_LANGUAGE "${ language }"`;
+    this.options.languages.map((language, index) => {
+        const string = [`!insertmacro MUI_LANGUAGE "${ language }"`];
+        if (this.options.licenses) {
+            string.push(`LicenseLangString pagelicense \${LANG_${ language }} "${ win32.normalize(resolve(this.options.licenses[index] || this.options.licenses[0])) }"`)
+        }
+        if (this.options.unLicenses) {
+            string.push(`LicenseLangString unpagelicense \${LANG_${ language }} "${ win32.normalize(resolve(this.options.unLicenses[index] || this.options.unLicenses[0])) }"`)
+        }
+        return string.join('\n');
     }).join('\n')
 }
 

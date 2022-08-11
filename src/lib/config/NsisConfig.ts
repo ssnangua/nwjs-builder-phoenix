@@ -8,6 +8,8 @@ export class NsisConfig {
     public welcomeBmp: string = undefined;
 
     public languages: string[] = [ 'English' ];
+    public licenses: string[] = undefined;
+    public unLicenses: string[] = undefined;
 
     public installDirectory: string = '$LOCALAPPDATA\\${_APPNAME}';
 

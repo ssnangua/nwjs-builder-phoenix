@@ -1,6 +1,6 @@
 {
   "name": "@ssnangua/nwjs-builder-phoenix",
-  "version": "1.15.4",
+  "version": "1.15.5",
   "description": "Fixed bugs and added some new features (`runAsAdmin`, `welcomeBmp`, etc.)",
   "main": "./dist/lib/index.js",
   "types": "./dist/lib/index.d.ts",
